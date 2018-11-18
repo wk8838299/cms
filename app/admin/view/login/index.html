@@ -1,0 +1,48 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理员登录页面</title>
+	<link href="/static/admin/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+	<link rel="stylesheet" href="/static/admin/css/login.css" type="text/css" />
+</head>
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+	<div class="login_logo"><h2>网站后台管理</h2></div>
+	<div class="login_boder">
+		<form action="{:url('login/index')}" method="post" class="login-form">
+		<div class="login_padding" id="login_model">
+			<h2>用户名</h2>
+			<label>
+				<input type="text" name="username" class="txt_input txt_input2" placeholder="输入用户名" >
+			</label>
+			<h2>密码</h2>
+			<label>
+				<input type="password" name="password" id="userpwd" class="txt_input" placeholder="********">
+			</label>
+			<div class="rem_sub">
+				<div class="rem_sub_l">
+					<input type="checkbox" name="saveme" id="save_me" value="1" />
+					<label for="checkbox" id="save">
+						记住一周
+					</label>
+				</div>
+				<label>
+					<input type="button" class="sub_button" name="button" id="button" value="登录" style="opacity: 0.7;" />
+				</label>
+			</div>
+		</div>
+		</form>
+		<div class="errors"></div>
+	</div>
+	<div class="footer">
+		<div class="copyrights">版权所有@<a href="http://www.whobt.com/">凡的博客</a></div>
+	</div>
+</div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plugins/layui/layui.all.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/admin/js/login.js"></script>
+</body>
+</html>

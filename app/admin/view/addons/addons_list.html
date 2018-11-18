@@ -1,0 +1,70 @@
+<div id="main-content">
+    <div id="main" class="main">
+        <div class="main-title-h">
+            <span class="h1-title">应用管理 </span>
+        </div>
+        <div class="cf">
+            <button class="btn ajax-post confirm btn-danger navbar-btn btn-sm" url="{:url('menu/del')}" target-form="ids">安 装</button>
+            <a class="btn btn-info navbar-btn btn-sm" href="{:url('menu/import',['pid'=>input('pid',0)])}">卸 载</a>
+            <button class="btn list_sort btn-warning  navbar-btn btn-sm" url="{:url('menu/sort',['pid'=>input('pid',0)],'')}">排序</button>
+            <!-- 高级搜索 -->
+            <div class="search-form fr cf">
+                <div class="sleft">
+                    <input type="text" name="title" class="search-input" value="{:input('title')}" placeholder="请输入应用名称">
+                    <a class="sch-btn" href="javascript:;" id="search" url="__SELF__"><i class="btn-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="data-table table-striped">
+            <form class="ids">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="row-selected">
+                            <input class="checkbox check-all" type="checkbox">
+                        </th>
+                        <th>ID</th>
+						<th>排序</th>
+						<th>插件标识</th>
+						<th>插件名称</th>
+						<th>插件描述</th>
+						<th>作者</th>
+						<th>版本</th>
+						<th style="border-right:#CCC solid 1px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {notempty name="addons"}
+                    	{foreach name="addons" item="v"}
+							<tr>
+								{notempty name="v.id"}
+                                 <td><input class="ids row-selected" type="checkbox" name="id[]" value="{$v.id}"></td>
+								<td height="28" >{$v.id}</td>
+								<td><input name="{$v.id}" value="{$v.sort}" class="list_order center"/></td>
+								{else /}
+                                 <td><input class="ids row-selected" type="checkbox" name="id[]" value="0"></td>
+								<td height="28" ></td>
+								<td></td>
+								{/notempty}
+								<td>{$v.name}</td>
+								<td>{$v.title}</td>
+								<td>{$v.description}</td>
+								<td>{$v.author}</td>
+								<td>{$v.version}</td>
+								<td>{$v.actions}
+								</td>
+							</tr>
+						{/foreach}
+                        {else/}
+                        <td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+                    {/notempty}
+                    </tbody>
+                </table>
+            </form>
+            <!-- 分页 -->
+            <div class="page">
+
+            </div>
+        </div>
+    </div>
+</div>

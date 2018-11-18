@@ -1,0 +1,28 @@
+<div id="subnav" class="subnav" style="max-height: 94%;overflow-x: hidden;overflow-y: auto;">
+	{notempty name="_extra_menu"}
+		{// 动态扩展菜单 //} {:extra_menu($_extra_menu,$__MENU__)}
+	{/notempty}
+	{volist name="__MENU__.child" id="sub_menu"}
+	<!-- 子导航 -->
+		{notempty name="sub_menu"}
+			{notempty name="key"}
+			<h3><i class="icon icon-unfold"></i>{$key}</h3>
+			{/notempty}
+			<ul class="side-sub-menu">
+				{volist name="sub_menu" id="menu"}
+				<li>
+					<a class="item" href="{$menu.url|url}">
+						{empty name="menu.ico_name"}
+							<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+						{else/}
+							<span class="glyphicon glyphicon-{$menu.ico_name}" aria-hidden="true"></span>
+						{/empty}
+						{$menu.title} 
+					</a>
+				</li>
+				{/volist}
+			</ul>
+		{/notempty}
+		<!-- /子导航 -->
+	{/volist}
+</div>

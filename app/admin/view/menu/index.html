@@ -1,0 +1,79 @@
+<div id="main-content">
+    <div id="main" class="main">
+        <div class="main-title-h">
+            <span class="h1-title">菜单管理 </span>
+        </div>
+        <div class="cf">
+            <a class="btn btn-success navbar-btn btn-sm" href="{:url('menu/add',['pid'=>input('pid',0)])}">新 增</a>
+            <button class="btn ajax-post confirm btn-danger navbar-btn btn-sm" url="{:url('menu/del')}" target-form="ids">删 除</button>
+            <a class="btn btn-info navbar-btn btn-sm" href="{:url('menu/import',['pid'=>input('pid',0)])}">导 入</a>
+            <button class="btn list_sort btn-warning  navbar-btn btn-sm" url="{:url('menu/sort',['pid'=>input('pid',0)],'')}">排序</button>
+            <!-- 高级搜索 -->
+            <div class="search-form fr cf">
+                <div class="sleft">
+                    <input type="text" name="title" class="search-input" value="{:input('title')}" placeholder="请输入菜单名称">
+                    <a class="sch-btn" href="javascript:;" id="search" url="__SELF__"><i class="btn-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="data-table table-striped">
+            <form class="ids">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="row-selected">
+                            <input class="checkbox check-all" type="checkbox">
+                        </th>
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>上级菜单</th>
+                        <th>分组</th>
+                        <th>URL</th>
+                        <th>排序</th>
+                        <th>仅开发者模式显示</th>
+                        <th>隐藏</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {notempty name="list"}
+                        {volist name="list" id="menu"}
+                            <tr>
+                                <td><input class="ids row-selected" type="checkbox" name="id[]" value="{$menu.id}"></td>
+                                <td>{$menu.id}</td>
+                                <td>
+                                    <a href="{:url('menu/index',['pid'=>$menu['id']])}">{$menu.title}</a>
+                                </td>
+                                <td>{$menu.up_title|default='无'}</td>
+                                <td>{$menu.group}</td>
+                                <td>{$menu.url}</td>
+                                <td>{$menu.sort}</td>
+                                <td>
+                                    <a href="{:url('menu/toogledev',['id'=>$menu['id'],'value'=>abs($menu['is_dev']-1)])}" class="ajax-get">
+                                        {$menu.is_dev_text}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{:url('menu/tooglehide',['id'=>$menu['id'],'value'=>abs($menu['hide']-1)])}" class="ajax-get">
+                                        {$menu.hide_text}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a title="编辑" href="{:url('menu/edit',['id'=>$menu['id']])}" class="btn btn-primary btn-xs">编辑</a>
+                                    <a class="confirm ajax-get btn-danger btn-xs" title="删除" href="{:url('menu/del',['id'=>$menu['id']])}">删除</a>
+                                </td>
+                            </tr>
+                        {/volist}
+                        {else/}
+                        <td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+                    {/notempty}
+                    </tbody>
+                </table>
+            </form>
+            <!-- 分页 -->
+            <div class="page">
+
+            </div>
+        </div>
+    </div>
+</div>

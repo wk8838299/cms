@@ -1,0 +1,62 @@
+<div id="main-content">
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title"><a href="{:url('article/index')}">文章管理</a></span>
+		</div>
+		<div class="cf">
+			<div class="fl">
+				<a class="btn btn-success " href="{:url('article/edit')}">新 增</a>
+				<button class="btn ajax-post btn-info " url="{:url('article/status',array('type'=>'resume'))}" target-form="ids">启 用</button>
+				<button class="btn ajax-post btn-warning " url="{:url('article/status',array('type'=>'forbid'))}" target-form="ids">禁 用</button>
+				<button class="btn ajax-post confirm btn-danger " url="{:url('article/status',array('type'=>'del'))}" target-form="ids">删 除</button>
+			</div>
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+						<select style="width: 160px; float: left; margin-right: 10px;" name="status" class="form-control">
+							<option value=""
+							{empty name="Think.get.status"}selected{/empty}
+							>全部状态</option>
+							<option value="1"
+							{eq name="Think.get.status" value="1"}selected{/eq}
+							>冻结状态</option>
+							<option value="2"
+							{eq name="Think.get.status" value="2"}selected{/eq}
+							>正常状态</option>
+						</select>
+						<select style=" width: 160px; float: left; margin-right: 10px;" name="field" class="form-control">
+							<option value="title"
+							{eq name="Think.get.field" value="title"}selected{/eq}
+							>文章标题</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入查询内容" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+					<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+					<th class="">ID</th>
+					<th class="">发布人</th>
+					<th class="">文章类型</th>
+					<th class="">文章标题</th>
+					<th class="">首页显示</th>
+					<th class="">底部显示</th>
+					<th class="">添加时间</th>
+					<th class="">编辑时间</th>
+					<th class="">排序</th>
+					<th class="">状态</th>
+					<th class="">操作</th>
+				</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
